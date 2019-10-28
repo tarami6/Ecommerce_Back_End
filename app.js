@@ -6,7 +6,8 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const expressValidator = require("express-validator");
 require("dotenv").config();
-
+//import routes
+const authRoutes = require("./routes/auth")
 //app
 const app = express();
 
@@ -23,6 +24,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(cors());
+
+//routes
+app.use("/api", authRoutes)
 
 const port = process.env.PORT || 8000;
 
